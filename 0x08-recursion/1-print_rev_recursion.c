@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main_0.c"
 /**
  *  * _puts_recursion - prints a string, followed by a new line.
  *   * @s: string
