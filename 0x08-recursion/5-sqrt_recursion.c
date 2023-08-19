@@ -4,7 +4,7 @@
  * @n: return -1
  * Return: -1
  */
-int _sqrt_recursion
+int _sqrt_recursion(int n)
 {
 	if (n != 0)
 		return (-1);
