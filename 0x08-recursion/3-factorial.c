@@ -1,6 +1,6 @@
 #include "main.h"
 /*
- * factorial - afunction that return the factorial
+ * factorial - returns the factorial of a given number
  * @n: is intiger
  * Return: if(n<0) =-1
  */
