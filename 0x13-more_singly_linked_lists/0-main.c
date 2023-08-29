@@ -16,7 +16,7 @@ size_t n;
 
 head = &hello;
 new = malloc(sizeof(listint_t));
-if (new == NULL);
+if (new == NULL)
 
 {
 printf("Error\n");
