@@ -14,32 +14,32 @@
 
 size_t print_listint_safe(const listint_t *head)
 {
-		listnode_t *nodes = NULL; /* stores address of nodes */
-			size_t count = 0;
+listnode_t *nodes = NULL; /* stores address of nodes */
+size_t count = 0;
 
-				/* while you have not encountered a loop */
-				while (!is_in_nodes(nodes, head))
-						{
-									/* check if the malloc fails then exit */
-									if (!add_nodeptr(&nodes, head))
-												{
-																free_listnode(nodes);
-																exit(98);
-												}
-											/* print address of current node and the value of field n */
-											/* cast it a void pointer in order to print the address */
-											printf("[%p] %d\n", (void *)head, head->n);
-													/* count the nodes */
-													count++;
-															head = head->next;
-																}
-					/* if you encounter a loop */
-					if (head != NULL)
-							/* print where the loop starts */
-								printf("-> [%p] %d\n", (void *)head, head->n);
-						free_listnode(nodes);
-							/* return number of nodes */
-							return (count);
+/* while you have not encountered a loop */
+while (!is_in_nodes(nodes, head))
+{
+/* check if the malloc fails then exit 
+ */ if (!add_nodeptr(&nodes, head))
+{
+free_listnode(nodes);
+exit(98);
+}
+/* print address of current node and the value of field n */
+/* cast it a void pointer in order to print the address */
+printf("[%p] %d\n", (void *)head, head->n);
+/* count the nodes */
+count++;
+head = head->next;
+}
+/* if you encounter a loop */
+if (head != NULL)
+/* print where the loop starts */
+printf("-> [%p] %d\n", (void *)head, head->n);
+free_listnode(nodes);
+/* return number of nodes */
+return (count);
 }
 
 /**
@@ -51,29 +51,29 @@ size_t print_listint_safe(const listint_t *head)
  */
 listnode_t *add_nodeptr(listnode_t **head, const listint_t *ptr)
 {
-		listnode_t *new_node;
+listnode_t *new_node;
 
-			/* create new node */
-			new_node = malloc(sizeof(listnode_t));
-				/* if malloc fails return NULL */
-				if (new_node == NULL)
-							return (NULL);
-					new_node->ptr = (listint_t *)ptr;
-						new_node->next = *head;
-							*head = new_node;
-								return (new_node);
+/* create new node */
+new_node = malloc(sizeof(listnode_t));
+/* if malloc fails return NULL */
+if (new_node == NULL)
+return (NULL);
+new_node->ptr = (listint_t *)ptr;
+new_node->next = *head;
+*head = new_node;
+return (new_node);
 }
 
 /**
- *  * free_listnode - frees a free_listnode list
- *   * @head: pointer to first node of the list
- *    */
+ * free_listnode - frees a free_listnode list
+ * @head: pointer to first node of the list
+ */
 void free_listnode(listnode_t *head)
 {
-		if (head == NULL)
-					return;
-			free_listnode(head->next);
-	free(head);
+if (head == NULL)
+return;
+free_listnode(head->next);
+free(head);
 }
 
 /**
