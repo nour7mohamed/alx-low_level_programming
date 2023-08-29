@@ -26,3 +26,4 @@ data = temp_variable->n;
 free(temp_variable);
 return (data);
 }
+

@@ -46,7 +46,8 @@ if (i == idx - 1 && traverse != NULL)
 {
 new_node->next = traverse->next;
 traverse->next = new_node;
-turn (new_node);
+return (new_node);
 }
 return (NULL);
 }
+
