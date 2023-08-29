@@ -1,39 +1,47 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
+
 /**
- * argstostr - takes two arguments
- * @ac: 1st number
- * @av: char
- * Return: char
+ * argstostr - concatenates all the arguments of your program
+ *@ac: number of arguments
+ *@av: arguments
+ * Return: a pointer to a new string
  */
 char *argstostr(int ac, char **av)
 {
-int i, n, r = 0, l = 0;
-char *str;
+	int i;
+	int j;
+	char *p = NULL;
+	int k;
+	int ext;
 
-if (ac == 0 || av == NULL)
-return (NULL);
-for (i = 0; i < ac; i++)
-{
-for (n = 0; av[i][n]; n++)
-l++;
-}
-l += ac;
+	k = 0;
+	ext = 0;
+	if (ac == 0 || av == NULL)
+		return (NULL);
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			ext++;
+		}
+	}
 
-if (str == NULL)
-return (NULL);
-for (i = 0; i < ac; i++)
-{
-for (n = 0; av[i][n]; n++)
-{
-str[r] = av[i][n];
-r++;
-}
-if (str[r] == '\0')
-{
-str[r++] = '\n';
-}
-}
-return (str);
+	p = (char *)malloc(ext + ac + 1 * sizeof(char));
+	if (p == NULL)
+		return (NULL);
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			p[k] = av[i][j];
+			k++;
+		}
+		p[k] = '\n';
+		k++;
+	}
+	p[k] = '\0';
+	return (p);
 }
 
