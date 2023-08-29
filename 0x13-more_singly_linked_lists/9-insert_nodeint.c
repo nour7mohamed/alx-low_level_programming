@@ -9,6 +9,7 @@
  * @n: value of the new node.
  * if it is not possible to add the new node at index idx, do not,
  * add the new node and return NULL.
+ *
  * Return:  the address of the new node, or NULL if it failed.
  */
 
@@ -35,17 +36,17 @@ return (new_node);
 }
 /* make traverse be the value at head */
 traverse = *head;
-
 while (i != idx - 1 && traverse != NULL)
+{
 traverse = traverse->next;
 i++;
 }
 
-if (i == idx - 1 && traverse != NULL);
+if (i == idx - 1 && traverse != NULL)
 {
 new_node->next = traverse->next;
 traverse->next = new_node;
-return (new_node);
+turn (new_node);
 }
 return (NULL);
 }
